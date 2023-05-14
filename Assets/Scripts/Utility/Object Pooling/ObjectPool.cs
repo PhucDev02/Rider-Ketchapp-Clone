@@ -19,7 +19,6 @@ public class ObjectPool : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        this.RegisterListener(EventID.OnNewDeal, (param) => RecallAll());
 
     }
     private void Start()

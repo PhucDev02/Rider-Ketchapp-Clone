@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3822135828911857650}
   - component: {fileID: 3822135828911857653}
   - component: {fileID: 3822135828911857652}
+  - component: {fileID: -1079454660039620636}
   m_Layer: 0
   m_Name: LineHorizontal
   m_TagString: Untagged
@@ -116,3 +117,15 @@ PolygonCollider2D:
       - {x: 1.885, y: -0.12}
       - {x: 1.885, y: 0.12}
       - {x: 1.865, y: 0.14}
+--- !u!114 &-1079454660039620636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822135828911857655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e823ce2f59b9a149b6e9f8f5623608b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

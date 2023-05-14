@@ -4,49 +4,67 @@ using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
 {
-    bool move = false;
-    bool isGrounded = false;
+    bool isTouching = false;
+   public bool isOnGround = false;
 
-    public Rigidbody2D rb;
+    public Rigidbody2D body;
 
     public float speed = 20f;
     public float rotationSpeed = 2f;
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0) &&!MouseInput.IsMouseOverUI() && GameController.Instance.gameOver == false)
         {
-            move = true;
+            isTouching = true;
+            AudioManager.Instance.Play("Accelerate");
         }
-        if (Input.GetButtonUp("Fire1"))
+        if (Input.GetMouseButtonUp(0))
         {
-            move = false;
+            isTouching = false;
+            AudioManager.Instance.Stop("Accelerate");
         }
     }
 
     private void FixedUpdate()
     {
-        if (move == true)
+        if (isTouching == true&&InputManager.canTouch)
         {
-            if (isGrounded)
+            if (isOnGround)
             {
-                rb.AddForce(transform.right * speed * Time.fixedDeltaTime * 100f, ForceMode2D.Force);
+                body.AddForce(transform.right * speed * Time.fixedDeltaTime * 100f, ForceMode2D.Force);
             }
             else
             {
-                if (rb.angularVelocity <= 500)
-                    rb.AddTorque(rotationSpeed * Time.fixedDeltaTime * 100f, ForceMode2D.Force);
+                if (body.angularVelocity <= 500)
+                    body.AddTorque(rotationSpeed * Time.fixedDeltaTime * 100f, ForceMode2D.Force);
             }
+        }
+        else
+        {
+            body.angularVelocity *= 0.97f;
         }
     }
 
+
     private void OnCollisionEnter2D()
     {
-        isGrounded = true;
+        isOnGround = true;
     }
-
-    private void OnCollisionExit2D()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        isGrounded = false;
+        isOnGround = false;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.CompareTag("Booster"))
+        {
+            body.AddForce(collision.gameObject.transform.right * speed * Time.fixedDeltaTime * 1000f, ForceMode2D.Force);
+        }
+    }
+    public float perfectFlipRotationThreshold = 180;
+
+    private float totalRotaion;
+    private Quaternion currentRotation;
+
 }

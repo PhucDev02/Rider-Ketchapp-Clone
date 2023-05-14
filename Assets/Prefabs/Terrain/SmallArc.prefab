@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8478829692571165857}
   - component: {fileID: 8478829692571165862}
   - component: {fileID: 8478829692571165863}
+  - component: {fileID: 179166838668132166}
   m_Layer: 0
   m_Name: SmallArc
   m_TagString: Untagged
@@ -110,3 +111,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &179166838668132166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8478829692571165860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e823ce2f59b9a149b6e9f8f5623608b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,7 +1,22 @@
 fileFormatVersion: 2
 guid: 5827b998dbfd73a48a3cf76b858df177
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6542298180824403790
+    second: animation_gameplay8-hd_0
+  - first:
+      213: -6728192902825718238
+    second: animation_gameplay8-hd_1
+  - first:
+      213: -5759273871188888168
+    second: animation_gameplay8-hd_2
+  - first:
+      213: -7372446213850612550
+    second: animation_gameplay8-hd_3
+  - first:
+      213: -1877286462549120861
+    second: animation_gameplay8-hd_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -125,7 +140,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: animation_gameplay8-hd_0
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 979
+        width: 810
+        height: 1005
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b0f64597761535a0800000000000000
+      internalID: -6542298180824403790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_gameplay8-hd_1
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 1462
+        width: 895
+        height: 528
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ec4cec338a0a2a0800000000000000
+      internalID: -6728192902825718238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_gameplay8-hd_2
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 51
+        width: 299
+        height: 853
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895f8979de2f210b0800000000000000
+      internalID: -5759273871188888168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_gameplay8-hd_3
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 0
+        width: 1500
+        height: 1430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcb2c9ba3fcfa990800000000000000
+      internalID: -7372446213850612550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animation_gameplay8-hd_4
+      rect:
+        serializedVersion: 2
+        x: 1745
+        y: 112
+        width: 297
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a82c1a98e982f5e0800000000000000
+      internalID: -1877286462549120861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

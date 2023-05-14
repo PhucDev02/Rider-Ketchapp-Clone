@@ -1,8 +1,10 @@
+using MoreMountains.NiceVibrations;
 using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    #region singleton
     public static AudioManager Instance;
     void Awake()
     {
@@ -16,10 +18,28 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
-
+    #endregion
     public Sound[] sounds;
 
-
+    private void Start()
+    {
+        this.RegisterListener(EventID.OnGameEndlessOver, (x) => Vibrate());
+        PlayBackgroundMusic();
+    }
+    public void PlayBackgroundMusic()
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == "BackgroundMusic");
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+        if (PlayerPrefs.GetInt("MusicOn", 1) == 1)
+        {
+            Debug.Log("a");
+            s.source.Play();
+        }
+    }
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -41,14 +61,15 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        if (PlayerPrefs.GetInt("SoundOn") == 1)
-        {
-            s.source.Stop();
-        }
+        s.source.Stop();
     }
-    public void ClickSound()
+    public void Vibrate()
+    {
+        if (PlayerPrefs.GetInt("VibrateOn", 1) == 1)
+            MMVibrationManager.Vibrate();
+    }
+    public void ButtonClick()
     {
         Play("ButtonClick");
     }
-
 }
