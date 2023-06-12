@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preview: {fileID: 21300000, guid: 1153586fca016f7428253962520dbc36, type: 3}
   price: 200
-  isPurchased: 1
+  isPurchased: 0
   id: 1

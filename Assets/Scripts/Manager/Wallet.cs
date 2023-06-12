@@ -14,12 +14,10 @@ public class Wallet : MonoBehaviour
 		gems = PlayerPrefs.GetInt("Gems");
 		WalletUpdate();
 	}
-
 	public static void WalletUpdate()
 	{
 		gemsText.text = gems.ToString();
 	}
-
 	public static void AddGems(int amount)
 	{
 		AudioManager.Instance.Play("CollectGem");

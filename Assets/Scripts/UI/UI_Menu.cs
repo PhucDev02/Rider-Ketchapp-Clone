@@ -32,6 +32,7 @@ public class UI_Menu : MonoBehaviour
         StatisticManager.Instance.UpdateStat();
         gameObject.SetActive(true);
         GameController.Instance.Reset();
+
         canvasGroup.alpha = 1;
         topElement.DOAnchorPosY(-850, moveTime).SetEase(Ease.OutBack).SetUpdate(true);
         playBtn.DOScale(1, moveTime).SetEase(Ease.OutBack).SetUpdate(true);

@@ -25,7 +25,6 @@ public class Terrain : MonoBehaviour
     }
     private void UpdateSkin()
     {
-        Debug.Log(ThemeManager.Instance.idSelected);
         if (renderer != null)
         {
             renderer.color = ThemeManager.Instance.GetColorTerrain();

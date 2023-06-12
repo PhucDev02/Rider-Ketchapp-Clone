@@ -4,27 +4,22 @@ using UnityEngine;
 using TMPro;
 public class StatisticManager : MonoBehaviour
 {
+    #region singleton
     public static StatisticManager Instance;
     private void Awake()
     {
         Instance = this;
         this.RegisterListener(EventID.OnGameEndlessOver, (x) => UpdateScoreStat());
+        Load();
     }
-    public void UpdateScoreStat()
-    {
-
-        ScoreManager.Instance.ExecuteBestScore();
-        Instance.totalScore += ScoreManager.Instance.lastScoreInt;
-        avgScore = totalScore * 1.0f / gamesPlayed;
-    }
-
+    #endregion
+    #region attribute
     public int levelCompleted;
     public int gamesPlayed;
     public int totalScore;
     public int bestScore;
     public float avgScore;
     public int totalGems;
-    [SerializeField] TextMeshProUGUI lvlCompletedTxt;
     [SerializeField] TextMeshProUGUI gamePlayedTxt;
     [SerializeField] TextMeshProUGUI totalScoreTxt;
     [SerializeField] TextMeshProUGUI[] bestScoreTxt;
@@ -32,15 +27,19 @@ public class StatisticManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI totalGemTxt;
 
     [SerializeField] TextMeshProUGUI lastScore;
-
+    #endregion
     private void Start()
     {
-        Load();
         UpdateStat();
+    }
+    public void UpdateScoreStat()
+    {
+        ScoreManager.Instance.ExecuteBestScore();
+        Instance.totalScore += ScoreManager.Instance.lastScoreInt;
+        avgScore = totalScore * 1.0f / gamesPlayed;
     }
     public void UpdateStat()
     {
-        lvlCompletedTxt.text = "Levels completed: " + levelCompleted.ToString();
         gamePlayedTxt.text = gamesPlayed.ToString();
         totalScoreTxt.text = totalScore.ToString();
         foreach (TextMeshProUGUI t in bestScoreTxt)
@@ -53,7 +52,7 @@ public class StatisticManager : MonoBehaviour
     }
     private void Save()
     {
-        PlayerPrefs.SetInt("levelCompleted", levelCompleted);
+        Debug.Log(gamesPlayed.ToString());
         PlayerPrefs.SetInt("gamesPlayed", gamesPlayed);
         PlayerPrefs.SetInt("totalScore", totalScore);
         PlayerPrefs.SetInt("bestScore", bestScore);
@@ -62,11 +61,21 @@ public class StatisticManager : MonoBehaviour
     }
     private void Load()
     {
-        levelCompleted = PlayerPrefs.GetInt("levelCompleted", 0);
         gamesPlayed = PlayerPrefs.GetInt("gamesPlayed", 0);
         totalScore = PlayerPrefs.GetInt("totalScore", 0);
         bestScore = PlayerPrefs.GetInt("bestScore", 0);
         avgScore = PlayerPrefs.GetFloat("avgScore", 0);
         totalGems = PlayerPrefs.GetInt("totalGems", 0);
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            Save();
+        }
+    }
+    private void OnApplicationQuit()
+    {
+        Save();
     }
 }

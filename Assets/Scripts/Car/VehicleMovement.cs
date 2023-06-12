@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class VehicleMovement : MonoBehaviour
 {
-    bool isTouching = false;
-   public bool isOnGround = false;
-
     public Rigidbody2D body;
-
     public float speed = 20f;
     public float rotationSpeed = 2f;
 
+    bool isTouching = false;
+    public bool isOnGround = false;
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) &&!MouseInput.IsMouseOverUI() && GameController.Instance.gameOver == false)
+        if (Input.GetMouseButtonDown(0) && !MouseInput.IsMouseOverUI() && GameController.Instance.gameOver == false)
         {
             isTouching = true;
             AudioManager.Instance.Play("Accelerate");
@@ -25,10 +24,9 @@ public class VehicleMovement : MonoBehaviour
             AudioManager.Instance.Stop("Accelerate");
         }
     }
-
     private void FixedUpdate()
     {
-        if (isTouching == true&&InputManager.canTouch)
+        if (isTouching == true && InputManager.canTouch)
         {
             if (isOnGround)
             {
@@ -45,26 +43,22 @@ public class VehicleMovement : MonoBehaviour
             body.angularVelocity *= 0.97f;
         }
     }
-
-
     private void OnCollisionEnter2D()
     {
         isOnGround = true;
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D()
     {
         isOnGround = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.CompareTag("Booster"))
+        if (collision.gameObject.CompareTag("Booster"))
         {
-            body.AddForce(collision.gameObject.transform.right * speed * Time.fixedDeltaTime * 1000f, ForceMode2D.Force);
+            AudioManager.Instance.Play("Booster");
+            body.AddForce(collision.gameObject.transform.right * speed 
+                * Time.fixedDeltaTime * 500f, ForceMode2D.Force);
         }
     }
-    public float perfectFlipRotationThreshold = 180;
-
-    private float totalRotaion;
-    private Quaternion currentRotation;
 
 }

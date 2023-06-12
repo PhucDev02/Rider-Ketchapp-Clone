@@ -4,21 +4,18 @@ using UnityEngine;
 using DG.Tweening;
 public class UI_GameOver : MonoBehaviour
 {
+    #region singleton
     public static UI_GameOver Instance;
-    public RectTransform playAgainBtn, menuBtn;
-    public CanvasGroup canvasGroup;
-    public GameObject panel;
     private void Awake()
     {
         Instance = this;
         Reset();
     }
-    public void Reset()
-    {
-        canvasGroup.DOFade(0, 0);
-        playAgainBtn.DOAnchorPosX(-700, 0);
-        menuBtn.DOAnchorPosX(700, 0);
-    }
+    #endregion
+    public RectTransform playAgainBtn, menuBtn;
+    public CanvasGroup canvasGroup;
+    public GameObject panel;
+    
     public void GameOver()
     {
         InputManager.canTouch = false;
@@ -38,5 +35,11 @@ public class UI_GameOver : MonoBehaviour
         });
         playAgainBtn.DOAnchorPosX(-700, 0.5f).SetEase(Ease.InBack);
         menuBtn.DOAnchorPosX(700, 0.5f).SetEase(Ease.InBack);
+    }
+    public void Reset()
+    {
+        canvasGroup.DOFade(0, 0);
+        playAgainBtn.DOAnchorPosX(-700, 0);
+        menuBtn.DOAnchorPosX(700, 0);
     }
 }

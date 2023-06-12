@@ -8,11 +8,8 @@ public class VehicleShopManager : MonoBehaviour
     public GameObject skinPrefab;
     public Transform content;
     public TextMeshProUGUI price;
-
     public static VehicleShopManager Instance;
     public Color disableColor;
-
-
     private void Awake()
     {
         Instance = this;
@@ -42,7 +39,7 @@ public class VehicleShopManager : MonoBehaviour
     }
     private void SavePurchaseList()
     {
-        ES3.Save("ThemePurchaseList", purchasedList);
+        ES3.Save("VehiclePurchaseList", purchasedList);
     }
     #endregion
     int idSelected;
@@ -54,7 +51,7 @@ public class VehicleShopManager : MonoBehaviour
             content.GetChild(i).GetComponent<VehicleSkinDisplay>().SetStatus(false);
         }
         content.GetChild(id).GetComponent<VehicleSkinDisplay>().SetStatus(true);
-        if (skins[id].isPurchased == true)
+        if (purchasedList[id] == true)
         {
             price.transform.parent.gameObject.SetActive(false); //buy button
             PlayerPrefs.SetInt("Skin", id);
@@ -73,10 +70,16 @@ public class VehicleShopManager : MonoBehaviour
             Wallet.RemoveGems(skins[idSelected].price);
             content.GetChild(idSelected).GetComponent<VehicleSkinDisplay>().SetStatus(true);
             content.GetChild(idSelected).GetComponent<VehicleSkinDisplay>().locker.SetActive(false);
-            skins[idSelected].isPurchased = true;
+            purchasedList[idSelected] = true;
             PlayerPrefs.SetInt("Skin", idSelected);
             this.PostEvent(EventID.OnSelectSkin);
         }
+        else
+        {
+            UI_Notice.Instance.Open();
+        }
+        SavePurchaseList();
+        UpdateCountText();
     }
     public Sprite GetSpriteVehicle()
     {

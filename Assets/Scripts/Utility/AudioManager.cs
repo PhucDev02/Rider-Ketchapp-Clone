@@ -36,7 +36,6 @@ public class AudioManager : MonoBehaviour
         }
         if (PlayerPrefs.GetInt("MusicOn", 1) == 1)
         {
-            Debug.Log("a");
             s.source.Play();
         }
     }
@@ -48,7 +47,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        if (PlayerPrefs.GetInt("SoundOn") == 1)
+        if (PlayerPrefs.GetInt("SoundOn", 1) == 1)
         {
             s.source.Play();
         }
@@ -65,8 +64,7 @@ public class AudioManager : MonoBehaviour
     }
     public void Vibrate()
     {
-        if (PlayerPrefs.GetInt("VibrateOn", 1) == 1)
-            MMVibrationManager.Vibrate();
+        MMVibrationManager.Vibrate();
     }
     public void ButtonClick()
     {

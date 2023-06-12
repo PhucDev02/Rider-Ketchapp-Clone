@@ -78,6 +78,8 @@ public class ThemeManager : MonoBehaviour
             PlayerPrefs.SetInt("Theme", idSelected);
             this.PostEvent(EventID.OnSelectTheme);
         }
+        else
+            UI_Notice.Instance.Open();
         SavePurchaseList();
         UpdateCountText();
     }

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    #region singleton
     public static MapGenerator Instance;
     private void Awake()
     {
         Instance = this;
         InputManager.canTouch = true;
     }
+    #endregion 
     [SerializeField] private Transform lastTerrain;
     public void GenNextTerrain()
     {

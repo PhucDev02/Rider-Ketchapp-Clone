@@ -15,11 +15,12 @@ public class VehicleCollision : MonoBehaviour
     }
     private async void ExecuteGameOver()
     {
+        if (GameController.Instance.gameOver == true) return;
+        GameController.Instance.gameOver = true;
         deathParticle.Play();
         this.PostEvent(EventID.OnGameEndlessOver);
 
         await Task.Delay(1000);
         if (Time.timeScale != 0)
             UI_GameOver.Instance.GameOver();
-    }
-}
+    }}

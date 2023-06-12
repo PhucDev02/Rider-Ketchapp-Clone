@@ -12,7 +12,7 @@ public class VehicleSkinDisplay : MonoBehaviour
         this.skin = skin;
         preview.sprite = skin.preview;
         skin.id = id;
-        if (skin.isPurchased)
+        if (VehicleShopManager.Instance.purchasedList[skin.id])
         {
             locker.SetActive(false);
             if (PlayerPrefs.GetInt("Skin", 0) == skin.id)
@@ -26,11 +26,10 @@ public class VehicleSkinDisplay : MonoBehaviour
             preview.color = VehicleShopManager.Instance.disableColor;
         }
     }
-
     public void OnClick()
     {
         VehicleShopManager.Instance.UpdateOnClick(skin.id);
-        if (skin.isPurchased)
+        if (VehicleShopManager.Instance.purchasedList[skin.id])
             this.PostEvent(EventID.OnSelectSkin);
     }
     public void SetStatus(bool status)
